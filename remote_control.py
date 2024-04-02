@@ -4,7 +4,7 @@ import webbrowser
 from shutil import move
 import time
 
-bot = telebot.TeleBot('7002887514:AAEm-Kz3_5bQSFW3Jzap6IDW4OcJRJN0dRw')
+bot = telebot.TeleBot('')
 
 @bot.message_handler(commands=['start', 'hello'])
 def func_start(message):
