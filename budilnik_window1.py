@@ -5,7 +5,7 @@ from tkinter import *
 import threading
 
 #код для будильника
-def cancel_alarm():
+def cancel_alarm(): #для удаления будильника
     label_2.configure(text='---Будильник удален')
     label_3.configure(text='')
     label_4.configure(text='')
@@ -56,7 +56,7 @@ cancel_btn.place(anchor='e', relx=1, rely=0.8, relwidth=0.36, relheight=0.1)
 label_1 = Label(text="Время будильника в формате ЧЧ:ММ:СС", bg='gray38', font=('Arial Black', 11))
 label_1.place(anchor='center', relx=0.5, rely=0.30, relwidth=0.7, relheight=0.1)
 
-label_2 = Label(bg='gray38') #85
+label_2 = Label(bg='gray38')
 label_2.place(anchor='w', relx=0, rely=0.60)
 
 label_3 = Label(bg='gray38')
