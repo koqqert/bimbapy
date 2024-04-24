@@ -19,11 +19,11 @@ def add_column(date): #создать столбец в таблице
             ADD COLUMN "{date}" integer NOT NULL DEFAULT 'нету'
     """)
     conn.commit()
-    
+
 def add_mark(name, name_column, mark): #добавлять значение в столбец
     c.execute(f"""UPDATE test SET "{name_column}" = "{mark}" WHERE name = '{name}'
     """)
     conn.commit()
 
 conn.commit()
-# conn.close()
+conn.close()
