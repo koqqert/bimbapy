@@ -40,7 +40,7 @@ def get_mark_day(name, name_column, name_id): #получить значение
     mark = c.fetchone()[0]
     conn.commit()
     return print(f"Вы успешно получили оценку {mark} на число {name_column} пользователю {name}")
-get_mark_day(name, name_column, name_id)
+# get_mark_day(name, name_column, name_id)
 
 conn.commit()
 conn.close()
