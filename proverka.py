@@ -9,10 +9,10 @@ c.execute("""CREATE TABLE IF NOT EXISTS journal(
 )
 """)
 #обычные значения для проверки
-name_column = "02.09.24"
+name_column = "день1"
 rename_column = "03.09.24"
-mark = 5
-name = "артем"
+# mark = 5
+name = "ученик1"
 name_id = 1
 
 def add_column(name_column): #создать столбец в таблице
@@ -36,11 +36,11 @@ def get_mark_all(*args): #получить все значения из стро
 # get_mark_all()
 
 def get_mark_day(name, name_column, name_id): #получить значение из столбца в опред. день
-    c.execute(f"SELECT '{name_column}' FROM journal WHERE name = '{name}' AND id = '{name_id}'")
-    mark = c.fetchone()[0]
+    c.execute(f"SELECT '{name_column}' FROM journal")
+    mark = c.fetchall()
     conn.commit()
-    return print(f"Вы успешно получили оценку {mark} на число {name_column} пользователю {name}")
-# get_mark_day(name, name_column, name_id)
+    return print(f"mark = {mark[name_id-1][0]}") #работало,но потом сломалось. принцип правильный
+get_mark_day(name, name_column, name_id)
 
 conn.commit()
 conn.close()
