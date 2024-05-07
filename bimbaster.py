@@ -1,7 +1,7 @@
 #homework
 import random
 import telebot
-bot = telebot.TeleBot("6862004066:AAHgMHlkpMh7qiXpqoHSpgYIbb9vE5jApCI")
+bot = telebot.TeleBot("")
 
 facts = [
     "Хамелеоны могут двигать глазами в разных направлениях одновременно.",
