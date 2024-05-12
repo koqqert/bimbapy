@@ -10,7 +10,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS journal(
 """)
 #обычные значения для проверки
 name_column = "д050524"
-rename_column = "03.09.24"
+rename_column = "д080524"
 mark = 5
 name = "ученик3"
 name_id = 4
