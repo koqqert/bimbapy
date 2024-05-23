@@ -1,5 +1,6 @@
 from flask import Flask, render_template_string
 import sqlite3
+import telebot
 
 app = Flask(__name__)
 
@@ -16,16 +17,18 @@ def index():
     tables = cursor.fetchall()
 
     conn.close()
-
-    tables_list = [table[0] for table in tables]
-    return render_template_string("""
+    
+    list_of_tables = """
         <h1>List of tables</h1>
         <ul>
             {% for table in tables %}
             <li><a href="/table/{{ table }}">{{ table }}</a></li>
             {% endfor %}
         </ul>
-    """, tables=tables_list)
+    """
+    
+    tables_list = [table[0] for table in tables]
+    return render_template_string(list_of_tables, tables=tables_list)
 
 @app.route('/table/<table_name>')
 def show_table(table_name):
@@ -41,7 +44,7 @@ def show_table(table_name):
 
     conn.close()
 
-    return render_template_string("""
+    table = """
         <h1>Table: {{ table_name }}</h1>
         <table border="1">
             <thead>
@@ -62,7 +65,9 @@ def show_table(table_name):
             </tbody>
         </table>
         <a href="/">Back to tables list</a>
-    """, table_name=table_name, rows=rows, col_names=col_names)
+    """
 
+    return render_template_string(table, table_name=table_name, rows=rows, col_names=col_names)
 if __name__ == '__main__':
     app.run(debug=True)
+
