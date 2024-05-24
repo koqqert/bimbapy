@@ -5,8 +5,20 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Журнал</title>
+    <title>Журнал: {{ table_name }}</title>
     <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
         .btn {
 	        display: inline-block;	
             box-sizing: border-box;
@@ -48,10 +60,43 @@
             color: #444;
             cursor: not-allowed;
         }
+        .high-value {
+            color: #008F7D; /* Цвет для значений больше 100 */
+        }
+        .medium-value {
+            color: #6EC100; /* Цвет для значений равных 5 */
+        }
+        .normal-value {
+            color: #F07300; /* Цвет для остальных значений */
+        }
+        .low-value {
+            color: red; /* Цвет для остальных значений */
+        }
+        .down-value {
+            color: black; /* Цвет для остальных значений */
+        }
     </style>
 </head>
 <body>
-    <h1>Добро пожаловать в просмотр журнала</h1>
-    <a class="btn" href="{{ url_for('tables') }}">Перейти к списку журналов</a>
+    <h1>Журнал: {{ table_name }}</h1>
+    <table>
+        <thead>
+            <tr>
+                {% for col_name in col_names %}
+                    <th>{{ col_name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    {% for cell in row %}
+                        <td> {{ cell }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn" href="{{ url_for('tables') }}">Вернуться к списку журналов</a>
 </body>
 </html>

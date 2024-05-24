@@ -5,7 +5,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Журнал</title>
+    <title>Список журналов</title>
     <style>
         .btn {
 	        display: inline-block;	
@@ -51,7 +51,13 @@
     </style>
 </head>
 <body>
-    <h1>Добро пожаловать в просмотр журнала</h1>
-    <a class="btn" href="{{ url_for('tables') }}">Перейти к списку журналов</a>
+    <h1>Список журналов</h1>
+    <ul>
+        {% for table in tables %}
+            <li><a href="{{ url_for('show_table', table_name=table) }}"><button>{{ table }}</button></a></li>
+        {% endfor %}
+    </ul>
+    <a class="btn" href="{{ url_for('index') }}">Вернуться на главную страницу</a>
 </body>
 </html>
+
