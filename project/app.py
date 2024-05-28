@@ -44,4 +44,3 @@ def show_table(table_name):
 
 if __name__ == '__main__':
     app.run(debug=True)
-#class= "{% if cell == 5 %}high-value{% elif cell == 4 %}medium-value{% elif cell == 3 %}normal-value{% elif cell == 2 %}low-value{% else %}down-value{% endif %}">
