@@ -61,19 +61,19 @@
             cursor: not-allowed;
         }
         .high-value {
-            color: #008F7D; /* Цвет для значений больше 100 */
+            color: #008F7D; /* Цвет для оценок равных 5 */
         }
         .medium-value {
-            color: #6EC100; /* Цвет для значений равных 5 */
+            color: #6EC100; /* Цвет для оценок равных 4 */
         }
         .normal-value {
-            color: #F07300; /* Цвет для остальных значений */
+            color: #F07300; /* Цвет для оценок равных 3 */
         }
         .low-value {
-            color: red; /* Цвет для остальных значений */
+            color: red; /* Цвет для оценок равных 2 */
         }
         .down-value {
-            color: black; /* Цвет для остальных значений */
+            color: black; /* Цвет для остальных оценок */
         }
     </style>
 </head>
@@ -91,7 +91,7 @@
             {% for row in rows %}
                 <tr>
                     {% for cell in row %}
-                        <td> {{ cell }}</td>
+                        <td class="{% if cell == 5 %}high-value{% elif cell == 4 %}medium-value{% elif cell == 3 %}normal-value{% elif cell == 2 %}low-value{% else %}down-value{% endif %}">{{ cell }}</td>
                     {% endfor %}
                 </tr>
             {% endfor %}
