@@ -32,7 +32,7 @@ def process_day(message):
         bot.send_message(message.chat.id, f"Столбец '{day}' уже существует.")
     else:
         try:
-            c.execute(f"ALTER TABLE journal ADD COLUMN '{day}' TEXT NOT NULL DEFAULT '-'")
+            c.execute(f"ALTER TABLE journal ADD COLUMN '{day}' string NOT NULL DEFAULT '-'")
             conn.commit()
             bot.send_message(message.chat.id, f"Вы успешно добавили столбец '{day}' в таблицу.")
         except sqlite3.OperationalError as e:
