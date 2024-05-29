@@ -4,7 +4,7 @@ import sqlite3
 app = Flask(__name__)
 
 # Путь к файлу базы данных
-db_file = 'journal.db'
+db_file = 'project\journal.db'
 
 @app.route('/')
 def index():
