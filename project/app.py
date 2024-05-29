@@ -15,7 +15,6 @@ def tables():
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
 
-    # Получаем список таблиц, исключая sqlite_sequence
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence';")
     tables = cursor.fetchall()
 
@@ -29,12 +28,10 @@ def show_table(table_name):
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
 
-    # Получаем названия столбцов, исключая столбец id
     cursor.execute(f"PRAGMA table_info({table_name})")
     columns_info = cursor.fetchall()
     col_names = [col[1] for col in columns_info if col[1] != 'id']
 
-    # Получаем данные из таблицы, исключая столбец id
     cursor.execute(f"SELECT {', '.join(col_names)} FROM {table_name}")
     rows = cursor.fetchall()
 
