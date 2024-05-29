@@ -11,7 +11,7 @@ def start(message):
     btn = telebot.types.KeyboardButton('Журнал', web_app=web_info)
     markup.add(btn)
     bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}, напишите команду, которую хотите запустить.', reply_markup=markup)
-
+    
 
 @bot.message_handler(commands=['add_day'])
 def ask_for_day(message):
@@ -37,6 +37,49 @@ def process_day(message):
         except sqlite3.OperationalError as e:
             bot.send_message(message.chat.id, f"Ошибка при добавлении столбца: {e}")
     
+    conn.close()
+
+@bot.message_handler(commands=['add_mark'])
+def ask_for_add_mark(message):
+    bot.send_message(message.chat.id,'Кому вы хотите добавить оценку?(пример: Иванов И.И.)')
+    bot.register_next_step_handler(message, process_name)
+def process_name(message):
+    name = message.text
+    bot.send_message(message.chat.id,'На какое число вы хотите добавить оценку?(пример: д010924)')
+    bot.register_next_step_handler(message, lambda m: process_day(m, name))
+def process_day(message,name):
+    day = message.text
+    bot.send_message(message.chat.id,'Какую оценку вы хотите добавить?(пример: 5)')
+    bot.register_next_step_handler(message, lambda m: process_add_mark(m, name, day))
+def process_add_mark(message, name, day):
+    mark = message.text
+
+    conn = sqlite3.connect('project\journal.db')
+    c = conn.cursor()
+
+    c.execute(f"UPDATE journal SET '{day}' = '{mark}' WHERE name = '{name}'")
+    conn.commit()
+    bot.send_message(message.chat.id, f"Вы успешно добавили пользователю {name} оценку {mark} на число {day}")
+
+    conn.close()
+@bot.message_handler(commands=['rename_date'])
+def ask_for_rename(message):
+    bot.send_message(message.chat.id,'Какую дату вы хотите переименовать?(пример: д010924)')
+    bot.register_next_step_handler(message, process_get_date)
+def process_get_date(message,):
+    date_for_rename = message.text
+    bot.send_message(message.chat.id,'Введите новое название даты?(пример: д020924)')
+    bot.register_next_step_handler(message, lambda m: process_rename_date(m, date_for_rename))
+def process_rename_date(message, date_for_rename):
+    new_date = message.text
+
+    conn = sqlite3.connect('project\journal.db')
+    c = conn.cursor()
+
+    c.execute(f"ALTER TABLE journal RENAME COLUMN '{date_for_rename}' TO '{new_date}'")
+    conn.commit()
+    bot.send_message(message.chat.id, f"Вы успешно переименовали дату {date_for_rename} на {new_date}")
+
     conn.close()
 
 @bot.message_handler()
