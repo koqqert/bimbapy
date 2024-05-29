@@ -9,17 +9,17 @@ c.execute("""CREATE TABLE IF NOT EXISTS journal(
 )
 """)
 #обычные значения для проверки
-name_column = "д050524"
+day = "д100524"
 rename_column = "80524"
 mark = 5
 name = "ученик3"
 name_id = 4
 t ='.'
 
-def add_column(name_column): #создать столбец в таблице
-    c.execute(f"ALTER TABLE journal ADD COLUMN '{name_column}' string NOT NULL DEFAULT '-'")
-    conn.commit()
-# add_column(name_column)
+# def add_column(name_column): #создать столбец в таблице
+#     c.execute(f"ALTER TABLE journal ADD COLUMN '{name_column}' string NOT NULL DEFAULT '-'")
+#     conn.commit()
+# # add_column(name_column)
 
 def add_mark(name, name_column, mark, name_id): #добавлять значение в столбец
     c.execute(f"UPDATE journal SET '{name_column}' = '{mark}' WHERE id = '{name_id}'")
