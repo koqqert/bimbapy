@@ -21,11 +21,11 @@ t ='.'
 #     conn.commit()
 # # add_column(name_column)
 
-def add_mark(name, name_column, mark, name_id): #добавлять значение в столбец
-    c.execute(f"UPDATE journal SET '{name_column}' = '{mark}' WHERE id = '{name_id}'")
-    conn.commit()
-    print(f"Вы успешно добавили пользователю {name} оценку {mark} на число {name_column}")
-# add_mark(name, name_column, mark, name_id)
+# def add_mark(name, name_column, mark, name_id): #добавлять значение в столбец
+#     c.execute(f"UPDATE journal SET '{name_column}' = '{mark}' WHERE id = '{name_id}'")
+#     conn.commit()
+#     print(f"Вы успешно добавили пользователю {name} оценку {mark} на число {name_column}")
+# # add_mark(name, name_column, mark, name_id)
 
 def get_mark_all(*args): #получить все значения из строки
     c.execute(f"SELECT * FROM journal WHERE id = '{name_id}'")
