@@ -106,6 +106,10 @@ def process_get_date(message, name):
     bot.send_message(message.chat.id, f"Вы успешно удалили оценку пользователя {name} на дату {date_for_delete}")
     conn.close()
 
+@bot.message_handler(commands=['get_id'])
+def get_id(message):
+    bot.send_message(message.chat.id,'Ваш ID = '+str(message.from_user.id))
+
 @bot.message_handler()
 def answer(message):
     bot.reply_to(message.chat.id,f"Я вас не понимаю.")
