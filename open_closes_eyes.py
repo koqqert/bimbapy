@@ -94,7 +94,7 @@ while(True):
         cv2.putText(frame,'score:'+str(score),(100,height-20), font, 1,(255,255,255),1,cv2.LINE_AA)
         
         #если баллы сонливости превышают 15, то сохраняем кадр и включаем звук
-        if(score>30):
+        if(score>25):
             try:
                 sound.play()
             except:  
