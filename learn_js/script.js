@@ -26,16 +26,6 @@ let meassage = (login = 'сотрудник') ? message = 'Привет' :
     (login = 'директор') ? message = 'здравствуйте' :
     (login = '') ? message = 'Нет логина' : '';
 
-/*что-то придумываю
-программа, которая отебрает сотрудников на работу
-*/
-let name = prompt('введите ваше имя', '');
-let age = prompt('введите ваш возвраст', '');
-let experience = prompt('какой у вас опыт работы(лет)', '');
-let requiredSalary = prompt('ваша требуемая зарплата', '');
-
-let isSuitable = age >= 18 && experience >=3 && requiredSalary >= 50000;
-alert(isSuitable ? 'вы подходите' : 'вы не подходите');
 //задание 4
 let userName = prompt('введите ваше имя', '');
 
@@ -55,7 +45,7 @@ if (name === 'Админ'){
 }
 //задание 5
 let num1 = 10,
-    num2 = 20,
+    num2 = 20;
     // result;
 
 if (result === null || result === undefined) {
@@ -66,3 +56,35 @@ if (result === null || result === undefined) {
   }
 }
 result ??= num1 ?? num2;
+//задание 6
+for (let i = 2; i <=10 ; i++) {
+  if (i % 2 == 0) {
+    alert(i);
+  }
+}
+//задание 7
+for (let i = 0; i < 3; i++) {
+  alert( `number ${i}!` );
+}
+
+let i = 0;
+while (i < 3) {
+  alert( `number ${i}!` );
+  i++;
+}
+//задание 8
+let num;
+do {
+  num = prompt('Enter number', '');
+} while (num <= 100 && num);
+
+//задание 9
+let n = 10;
+
+nextPrime:
+for (let i = 2; i <= n; i++) {
+  for (let j = 2; j < i; i++){
+    if (i % j == 0) continue nextPrime;
+  }
+  alert(i);
+}
