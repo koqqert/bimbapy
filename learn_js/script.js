@@ -1,6 +1,6 @@
 'use strict';
 //задание 1
-let number = prompt('Enter number', '');
+// let number = prompt('Enter number', '');
 
 if (number > 0 ){
     alert(1);
@@ -79,7 +79,7 @@ do {
 } while (num <= 100 && num);
 
 //задание 9
-let n = 10;
+// let n = 10;
 
 nextPrime:
 for (let i = 2; i <= n; i++) {
@@ -87,4 +87,82 @@ for (let i = 2; i <= n; i++) {
     if (i % j == 0) continue nextPrime;
   }
   alert(i);
+}
+
+//задание 10
+switch (browser) {
+  case 'Edge':
+    alert( "You've got the Edge!" );
+    break;
+
+  case 'Chrome':
+  case 'Firefox':
+  case 'Safari':
+  case 'Opera':
+    alert( 'Okay we support these browsers too' );
+    break;
+
+  default:
+    alert( 'We hope that this page looks ok!' );
+}
+
+if (browser == 'Edge'){
+  alert( "You've got the Edge!" );
+} else if (browser == 'Chrome'
+  || browser == 'Firefox'
+  || browser == 'Safari'
+  || browser == 'Opera') {
+  alert( 'Okay we support these browsers too' );
+} else {
+  alert( 'We hope that this page looks ok!' );
+}
+
+//задание 11
+const number = +prompt('Введите число между 0 и 3', '')
+
+switch (number) {
+  case 0: 
+    alert('Вы ввели число 0');
+    break;
+
+  case 1:
+    alert('Вы ввели число 1');
+    break;
+
+  case 2:
+  case 3:
+    alert('Вы ввели число 2, а может и 3');
+}
+
+//задание 12
+function checkAge(age) {
+  return (age > 18) || confirm('Родители разрешили?');
+ }
+
+function checkAge2(age) {
+  return (age > 18) ? true : confirm('Родители разрешили?');
+}
+
+//задание 13
+function min(a,b) {
+  return a < b ? a : b;
+}
+
+//задание14
+function pow(x, n) {
+  let result = x;
+
+  for (let i = 1; i < n; i++){
+    result *= x;
+  }
+  return result;
+}
+
+let x = prompt('введите число', '');
+let n = prompt('введите степень', '');
+
+if (n >= 1 && n % 1 == 0) {
+  alert( pow(x, n) );
+} else {
+  alert(`степень ${n} должна быть целым положительным числом`);
 }
