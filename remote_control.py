@@ -8,24 +8,29 @@ bot = telebot.TeleBot('')
 
 @bot.message_handler(commands=['start', 'hello'])
 def func_start(message):
-    bot.send_message(message.chat.id, f'привет, {message.from_user.first_name}, напишите команду, которую хотите запустить.')
+    bot.send_message(message.chat.id, f'привет, {message.from_user.first_name}, '
+                    f'напишите команду, которую хотите запустить.')
 
 @bot.message_handler(commands=['help']) #help
 def help(message):
-    bot.send_message(message.chat.id, f'для того, чтобы всё корректно работало нужно:  \n1.открытый Telegram на компьютере  \n2.корректный ввод  \n3.при работе с файлами указывать их расширение  \nдля предложений и вопросов писать @koqqert') 
+    bot.send_message(message.chat.id, f'для того, чтобы всё корректно работало нужно: '
+                    f' \n1.открытый Telegram на компьютере '
+                    f' \n2.корректный ввод '
+                    f' \n3.при работе с файлами указывать их расширение '
+                    f' \nдля предложений и вопросов писать @koqqert') 
 
 @bot.message_handler(commands=['browser_youtube']) #открывает ютуб  1
-def browser_youtube(message):
+def open_youtube(message):
     bot.send_message(message.chat.id, 'открываю сайт YouTube')
     webbrowser.open('https://www.youtube.com/')
 
 @bot.message_handler(commands=['browser_vk'])
-def browser_youtube(message):
+def open_vk(message):
     bot.send_message(message.chat.id, 'открываю сайт VK') #открывает вк  2
     webbrowser.open('https://vk.com/feed')
 
 @bot.message_handler(commands=['browser_telegram']) #открывает тг  3
-def browser_youtube(message):
+def open_telegram(message):
     bot.send_message(message.chat.id, 'открываю сайт Telegram Web')
     webbrowser.open('https://web.telegram.org/a/')
 
@@ -34,6 +39,7 @@ def search_folder_message(message):
     bot.send_message(message.chat.id, 'введите название папки')
     bot.register_next_step_handler(message, search_folder)
     return
+
 def search_folder(message):
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     folder_name = message.text
@@ -49,6 +55,7 @@ def search_file_message(message):
     bot.send_message(message.chat.id, 'введите название файла')
     bot.register_next_step_handler(message, search_file)
     return
+
 def search_file(message):
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     file_name = message.text
@@ -66,6 +73,7 @@ def create_folder_message(message):
     bot.send_message(message.chat.id, 'введите название папки')
     bot.register_next_step_handler(message, create_folder)
     return
+
 def create_folder(message):
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     folder_name = message.text
@@ -81,6 +89,7 @@ def del_file_message(message):
     bot.send_message(message.chat.id, 'введите название файла')
     bot.register_next_step_handler(message, del_file)
     return
+
 def del_file(message):
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     file_name = message.text
@@ -90,7 +99,8 @@ def del_file(message):
         os.remove(file_path)
         bot.send_message(message.chat.id, f'файл {file_name} удален')
     except FileNotFoundError:
-        bot.send_message(message.chat.id, "файл не существует или неправильно введено его название. Введите правильное название или создайте новый.")
+        bot.send_message(message.chat.id, "файл не существует или неправильно введено его название." \
+                        " Введите правильное название или создайте новый.")
 
 @bot.message_handler(commands=['del_folder']) #удаление папки  8
 def del_folder_message(message):
@@ -105,12 +115,21 @@ def del_folder(message):
         os.rmdir(folder_path)
         bot.send_message(message.chat.id, f'папка {folder_name} удалена')
     except FileNotFoundError:
-        bot.send_message(message.chat.id, "папка не существует или неправильно введено её название. Введите правильное название или создайте новую.")
+        bot.send_message(message.chat.id, "папка не существует или неправильно введено её название." \
+        " Введите правильное название или создайте новую.")
 
 @bot.message_handler(commands=['combo_command'])
 def combo_command_message(message):
     global check_combo_command
-    bot.send_message(message.chat.id, f'введите команды как числа через пробел: \n1 - открыть ютуб \n2 - открыть вк \n3 - открыть тг веб \n4 - создать папку \n5 - найти и открыть папку \n6 - удалить папку \n7 - удалить файл \n8 - найти и открыть файл \n9 - переместить файл в папку')
+    bot.send_message(message.chat.id, f'введите команды как числа через пробел: \n1 - открыть ютуб'
+                    f' \n2 - открыть вк'
+                    f' \n3 - открыть тг веб'
+                    f' \n4 - создать папку'
+                    f' \n5 - найти и открыть папку'
+                    f' \n6 - удалить папку'
+                    f' \n7 - удалить файл'
+                    f' \n8 - найти и открыть файл'
+                    f' \n9 - переместить файл в папку')
     bot.register_next_step_handler(message, combo_command)
     return
 def combo_command(message):
@@ -221,7 +240,6 @@ def moving_file_message_check(message):
 def moving_folder_message_check(message):
     global file_name, file_path
     folder_message = message.text
-    print(folder_message)
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     file_path = os.path.join(desktop_path, file_name)
     folder_path = os.path.join(desktop_path, folder_message)
@@ -231,7 +249,7 @@ def moving_folder_message_check(message):
         move(file_path, folder_path)
         bot.send_message(message.chat.id, f'файл {file_name} перемещен в папку {folder_message}')
     except FileNotFoundError:
-        bot.send_message(message.chat.id,"папка уже существует или неправильно введено её название. Введите новое название или удалите старую папку.")
-
+        bot.send_message(message.chat.id,"папка уже существует или неправильно введено её название." \
+                        " Введите новое название или удалите старую папку.")
 
 bot.polling(none_stop=True)
