@@ -254,3 +254,13 @@ function Accumulator(startingValue){
     this.value += +prompt('Enter a number', 0);
   }
 }
+
+//задание 2
+function readNumber(){
+  let number;
+  do {
+    num = prompt('Enter a number', 0)
+  } while (!isFinite(num));
+  if (num === null || num === "") return null;
+  return +num;
+}
