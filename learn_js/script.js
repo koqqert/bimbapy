@@ -255,12 +255,30 @@ function Accumulator(startingValue){
   }
 }
 
-//задание 2
+//задание 22
 function readNumber(){
   let number;
+
   do {
     num = prompt('Enter a number', 0)
   } while (!isFinite(num));
   if (num === null || num === "") return null;
   return +num;
+}
+
+//задание 23
+function cheackSpam(str){
+  let lowerStr = str.toLowerCase();
+  
+  return lowerStr.includes('viagra') || lowerStr.includes('xxx');
+}
+
+//задание 24
+function truncate(str, maxlength){
+  return (str.lenght > maxlength) ?
+    str.slice(0, maxlength - 1) + '...' : str; //один спец. символ
+}
+//задание 25
+function extractCurrencyValue(str){
+  return +str.slice(1);
 }
