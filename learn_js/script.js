@@ -282,3 +282,30 @@ function truncate(str, maxlength){
 function extractCurrencyValue(str){
   return +str.slice(1);
 }
+
+//задание 26
+let styles = ['Джаз', 'Блюз'];
+styles.push('Рок-н-ролл');
+styles[Math.floor((styles.lenght -1) / 2)] = 'Классика';
+alert(styles.shift());
+styles.unshift('Рэп','Регги');
+
+//задание 27
+function sumInput(){
+  let numbers = [];
+
+  while(true){
+
+    let value = prompt('enter a number: ', 0)
+
+    if (value === '' || value === null || !isFinite(value)) break;
+
+    numbers.push(+value);
+  }
+
+  let sum = 0;
+  for (let number of numbers) {
+    sum += number;
+  }
+  return numbers
+}
