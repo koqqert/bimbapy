@@ -337,3 +337,54 @@ function filterRangeInPlace(arr, a, b) {
 let arr = [5, 2, 1, -10, 8];
 arr.sort((a, b) => b - a);
 alert( arr );
+
+//задание 32
+function Calculator(){
+
+  this.methods = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+  };
+
+  this.calculate = function(str){
+    let arr = str.split(' '),
+      a = +arr[0],
+      op = arr[1],
+      b = +arr[2]
+
+    if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+      return NaN;
+    }
+
+    return this.methods[op](a, b);
+  }
+
+  this.addMethod = function(name, func){
+    this.methods[name] = func;
+  };
+
+}
+//задание 33
+let Vasya = { name: "Вася", age: 25 };
+let Petya = { name: "Петя", age: 30 };
+let Masha = { name: "Маша", age: 28 };
+
+let uusers = [ Vasya, Petya, Masha ];
+
+let names = uusers.map(item => item.name);
+
+//задание 34
+let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+let petya = { name: "Петя", surname: "Иванов", id: 2 };
+let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+let users = [ vasya, petya, masha ];
+
+let usersMapped = users.map(user => ({
+  fullName : `${user.name} ${user.surname}`,
+  id : user.id,
+}))
+//задание 35 (те же имена)
+function sortByAge(users){
+  users.sort((a, b) => a.age - b.age);
+}
