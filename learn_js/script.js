@@ -388,3 +388,27 @@ let usersMapped = users.map(user => ({
 function sortByAge(users){
   users.sort((a, b) => a.age - b.age);
 }
+
+//задание 36
+function unique(arr) {
+  return Array.from(new Set(arr))
+}
+
+let values = ["Hare", "Krishna", "Hare", "Krishna",
+  "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+//задание 37
+let arre = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+function aclean(arre){
+  let map = new Map();
+
+  for (let word of arre){
+    let sorted = word.toLowerCase().split('').sort().join('');
+    map.set(sorted, word);
+  }
+
+  return Array.from(map.values());
+
+};
