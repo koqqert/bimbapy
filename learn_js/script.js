@@ -431,5 +431,7 @@ function topSalary(salaries){
       maxName = name;
     }
   }
+
   return maxName;
+  
 };
