@@ -192,15 +192,15 @@ function isEmpty(obj) {
 }
 
 //задание 17
-let salaries = {
+let ssalaries = {
   John: 100,
   Ann: 160,
   Pete: 130
 }
 let sum = 0;
 
-for (let salary in salaries){
-  sum += salaries[salary];
+for (let salary in ssalaries){
+  sum += ssalaries[salary];
 }
 
 alert(sum);
@@ -411,4 +411,25 @@ function aclean(arre){
 
   return Array.from(map.values());
 
+};
+
+//задание 38
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+function topSalary(salaries){
+
+  let max = 0;
+  let maxName = 0;
+
+  for(const[name, salary] of Object.entries(salaries)){
+    if (max < salary){
+      max = salary;
+      maxName = name;
+    }
+  }
+  return maxName;
 };
