@@ -435,3 +435,32 @@ function topSalary(salaries){
   return maxName;
   
 };
+
+//задание 39
+let d = new Date(2012,1,2,3,12);
+alert(d)
+//задание 40
+function getWeekDay(date){
+  let days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+
+  return days[date.getDay()]
+
+}
+
+//задание 41
+function getSecondsToday(){
+  let now = new Date();
+
+  let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  let diff = now - today;
+  return Math.floor(diff / 1000);
+}
+//задание 42
+function getSecondsToTomorrow(){
+  let now = new Date();
+  let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  
+  let diff = tomorrow - now;
+  return Math.round(diff / 1000);
+}
