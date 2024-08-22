@@ -220,9 +220,9 @@ function filterRangeInPlace(arr, a, b) {
 
 }
 //задание 31 
-let arr = [5, 2, 1, -10, 8];
-arr.sort((a, b) => b - a);
-alert( arr );
+let arr2 = [5, 2, 1, -10, 8];
+arr2.sort((a, b) => b - a);
+alert( arr2 );
 
 //задание 32
 function Calculator(){
@@ -392,4 +392,26 @@ function sumTo(n){
 //задание 46
 function factorial(n){
   return (n != 1) ? n * factorial(n - 1) : 1;
+}
+
+//задание 47
+function sum(a){
+  return function(b){
+    return a + b;
+  }
+}
+
+//задание 48
+let arr = [1, 2, 3, 4, 5, 6, 7];
+
+function inBetween(a,b){
+  return function(x){
+    return x >= a && x <= b;
+  };
+}
+
+function inArray(arr){
+  return function(x){
+    return arr.includes(x);
+  };
 }
