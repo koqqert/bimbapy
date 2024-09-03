@@ -415,3 +415,44 @@ function inArray(arr){
     return arr.includes(x);
   };
 }
+//практика на codewars
+function humanReadable (seconds) {
+  const hours = Math.floor(seconds / 3600).toString.padStart(2,'0');
+  const minutes = Math.floor((seconds % 3600) / 60).toString().padStart(2,'0');
+  const secs = Math.floor(seconds % 60).toString.padStart(2,'0');
+
+  return `${hours}:${minutes}:${secs}`;
+}
+
+function moveZeros(arr) {
+  let nonZeros = [];
+  let zeroCount = 0;
+  
+  for (let element of arr){
+    if (element === 0){
+        zeroCount++;
+    } else {
+        nonZeros.push(element);
+    }
+  }
+  
+  while (zeroCount > 0){
+      nonZeros.push(0);
+      zeroCount--;
+  }
+  
+  return nonZeros;
+}
+
+function toCamelCase(str) {
+  let words = str.split(' ');
+  let result = '';
+
+  for (let i = 0; i < words.length; i++) {
+    let word = words[i];
+    result += word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }
+
+  return result;
+
+}
