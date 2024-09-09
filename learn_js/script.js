@@ -491,3 +491,38 @@ class Clock {
     this.timer = setInterval(() => this.render(), 1000);
   }
 }
+
+class ExtendedClock extends Clock {
+  constructor(options) {
+    super(options);
+    let {precensions = 1000} = options;
+    this.precision = precisions;
+  }
+
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), this.precision);
+  }
+}
+
+
+function parseInt(words) {
+  let result = 0;
+  let current = 0;
+  let parts = words.split(/[\s-]+/);
+
+  for (let part of parts) {
+      let value = numberWords[part];
+      if (value >= 1000) {
+          current *= value;
+          result += current;
+          current = 0;
+      } else if (value >= 100) {
+          current *= value;
+      } else {
+          current += value;
+      }
+  }
+
+  return result + current;
+}
