@@ -526,3 +526,34 @@ function parseInt(words) {
 
   return result + current;
 }
+
+function high(x) {
+  function wordScore(word){
+    return word.split('').reduce((score, char) => score + (char.charCodeAt(0) - 96), 0);
+  }
+  
+  const words = x.split(' ');
+
+  let maxScore = 0;
+  let maxWord = '';
+
+  for (let word of words) {
+    const score = wordScore(word);
+    if (score > maxScore) {
+        maxScore = score;
+        maxWord = word;
+    }
+  }
+
+  return maxWord;
+}
+
+function domainName(url){
+  url = url.replace('https://', '').replace('http://', '').replace('www.', '');
+
+  const parts = url.split('/');
+  const domainParts = parts[0].split('.');
+
+  return domainParts[0];
+  
+}
