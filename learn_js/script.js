@@ -495,7 +495,7 @@ class Clock {
 class ExtendedClock extends Clock {
   constructor(options) {
     super(options);
-    let {precensions = 1000} = options;
+    let {precessions = 1000} = options;
     this.precision = precisions;
   }
 
