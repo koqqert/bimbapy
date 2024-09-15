@@ -557,3 +557,10 @@ function domainName(url){
   return domainParts[0];
   
 }
+
+class FormatError extends SyntaxError {
+  constructor(message){
+    super(message);
+     this.name = 'formatError';
+  }
+}
