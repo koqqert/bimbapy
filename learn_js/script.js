@@ -564,3 +564,9 @@ class FormatError extends SyntaxError {
      this.name = 'formatError';
   }
 }
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+
