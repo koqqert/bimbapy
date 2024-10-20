@@ -619,3 +619,67 @@ let table = document.body.firstElementChild;
       let row = table.rows[i];
       row.cells[i].style.backgroundColor = 'red';
     }
+
+let ul = document.createElement('ul');
+document.body.append(ul);
+
+while (true) {
+  let data = prompt("Введите текст для элемента списка", "");
+
+  if (!data) {
+    break;
+  }
+
+  let li = document.createElement('li');
+  li.textContent = data;
+  ul.append(li);
+}
+
+function createTree(container, obj) {
+  container.append(createTreeDom(obj));
+}
+
+function createTreeDom(obj) {
+  let ul = document.createElement('ul');
+  
+  for (let key in obj) {
+    let li = document.createElement('li');
+    li.innerHTML(key);
+
+    let childrenUL = createTreeDom(obj[key]);
+    if (childrenUL) {
+      li.append(childrenUL);
+    }
+    ul.append(li);
+  }
+
+  return ul;
+}
+
+function update() {
+  let clock = document.getElementById('clock');
+  let date = new Date();
+  let hours = date.getHours();
+  if (hours < 10) hours = "0" + hours;
+  clock.children[0].innerHTML = hours;
+
+  let minutes = date.getMinutes();
+  if (minutes < 10) minutes = "0" + minutes;
+  clock.children[1].innerHTML = minutes;
+
+  let seconds = date.getSeconds();
+  if (seconds < 10) seconds = '0' + seconds;
+  clock.children[2].innerHTML = seconds;
+}
+
+let timerId;
+
+function start() {
+  timerId = setInterval(update, 1000);
+  update();
+}
+
+function stop() {
+  clearInterval(timerId);
+  timerId = null;
+}
