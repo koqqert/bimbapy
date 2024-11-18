@@ -707,3 +707,13 @@ let fieldonclick = function(event){ //field.onclick
   ball.style.top = ballCoords.top + 'px';
   ball.style.left = ballCoords.left + 'px';
 }
+
+function hexStringToRGB(hexString) {
+  let strColor = hexString.toLowerCase().replace("#", ' ');
+  
+  let r = parseInt(strColor.substring(0,2), 16);
+  let g = parseInt(strColor.substring(2,4), 16);
+  let b = parseInt(strColor.substring(4,6), 16);
+
+  return {r: r, g: g, b: b};
+}
